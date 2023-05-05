@@ -9,7 +9,7 @@ connectDatabase();
 
 app.use(
   cors({
-    origin: ["https://passwordday.vercel.app/", "http://localhost:3000"],
+    origin: "*",
     methods: ["GET", "POST"],
     credentials: true,
   })
