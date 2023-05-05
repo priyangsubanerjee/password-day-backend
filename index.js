@@ -4,7 +4,6 @@ const port = 3000 || process.env.PORT;
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const connectDatabase = require("./db/connect");
-const passwordSchema = require("./db/passwordSchema");
 
 connectDatabase();
 

@@ -6,7 +6,12 @@ app.get("/", async (req, res) => {
     year: new Date().getFullYear(),
   });
   if (!currentPass) return res.send("No password found");
-  const publishedHints = currentPass.hints.filter((hint) => hint.published);
+  let publishedHints = currentPass.hints.filter((hint) => {
+    if (!hint.published) {
+      hint.description = "This hint has not been published yet";
+    }
+    return hint;
+  });
   res.send({
     hints: publishedHints,
     totalHints: currentPass.hints.length,
