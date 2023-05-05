@@ -4,9 +4,9 @@ const passwordSchema = require("../db/passwordSchema");
 app.get("/", async (req, res) => {
   // check headers for password
 
-  if (!req.headers.token) return res.send("Authorization required");
+  if (!req.headers["x-api-key"]) return res.send("Authorization required");
 
-  if (req.headers.token !== process.env.CREDENTIAL)
+  if (req.headers["x-api-key"].toString() !== process.env.CREDENTIAL.toString())
     return res.send("Access denied");
 
   let currentPass = await passwordSchema.findOne({
