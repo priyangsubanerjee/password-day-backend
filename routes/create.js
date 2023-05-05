@@ -2,9 +2,10 @@ const app = require("express").Router();
 const passwordSchema = require("../db/passwordSchema");
 
 app.post("/", async (req, res) => {
-  const { password, credential, hints, year } = req.body;
-  if (credential.toString() !== process.env.CREDENTIAL)
-    return res.send("Authentication failed");
+  const { password, hints, year } = req.body;
+  if (!req.headers.token) return res.send("Authorization required");
+  if (req.headers.token !== process.env.CREDENTIAL)
+    return res.send("Access denied");
   try {
     await passwordSchema.create({
       password,
