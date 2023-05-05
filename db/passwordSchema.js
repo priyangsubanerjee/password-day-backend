@@ -17,6 +17,7 @@ const passwordSchema = new Schema({
   year: {
     type: Number,
     required: true,
+    unique: true,
   },
 });
 

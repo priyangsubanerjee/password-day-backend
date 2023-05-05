@@ -17,6 +17,7 @@ app.use(
 );
 app.use(bodyParser.json());
 
+app.use("/create", require("./routes/create"));
 app.use("/hints", require("./routes/hints"));
 app.use("/publish", require("./routes/publish"));
 app.get("/", (req, res) => {
