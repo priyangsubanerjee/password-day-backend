@@ -16,9 +16,9 @@ app.use(
   })
 );
 app.use(bodyParser.json());
-app.get("/", (req, res) => {
-  res.send("Hello World");
-});
+
+app.use("/create", require("./routes/create"));
+app.use("/data", require("./routes/password"));
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
 });
