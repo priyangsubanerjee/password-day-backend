@@ -8,13 +8,7 @@ const passwordSchema = require("./db/passwordSchema");
 
 //connectDatabase();
 
-app.use(
-  cors({
-    origin: "*",
-    methods: ["GET", "POST"],
-    credentials: true,
-  })
-);
+app.use(cors());
 
 app.use(bodyParser.json());
 app.get("/", (req, res) => {
