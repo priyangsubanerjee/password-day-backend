@@ -4,9 +4,8 @@ const passwordSchema = require("../db/passwordSchema");
 app.post("/", async (req, res) => {
   let { index, state } = req.body;
 
-  if (!req.headers["x-api-key"]) res.send("Authorization required");
-
-  if (!req.headers["x-api-key"] !== process.env.CREDENTIAL)
+  if (!req.headers["x-api-key"]) return res.send("Authorization required");
+  if (req.headers["x-api-key"].toString() !== process.env.CREDENTIAL.toString())
     return res.send("Access denied");
 
   try {
