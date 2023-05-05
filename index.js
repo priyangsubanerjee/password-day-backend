@@ -19,6 +19,7 @@ app.use(bodyParser.json());
 app.use("/create", require("./routes/create"));
 app.use("/hints", require("./routes/hints"));
 app.use("/publish", require("./routes/publish"));
+app.use("/check", require("./routes/check"));
 app.get("/", (req, res) => {
   res.sendFile(__dirname + "/public/index.html");
 });
