@@ -4,7 +4,8 @@ const passwordSchema = require("../db/passwordSchema");
 app.post("/", async (req, res) => {
   let { index, state, credential } = req.body;
 
-  if (credential !== 2406) return res.send("Authentication failed");
+  if (credential.toString() !== process.env.CREDENTIAL)
+    return res.send("Authentication failed");
 
   try {
     let password = await passwordSchema.findOne({

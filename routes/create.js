@@ -3,7 +3,8 @@ const passwordSchema = require("../db/passwordSchema");
 
 app.post("/", async (req, res) => {
   const { password, credential, hints, year } = req.body;
-  if (credential !== 2406) return res.send("Authentication failed");
+  if (credential.toString() !== process.env.CREDENTIAL)
+    return res.send("Authentication failed");
   try {
     await passwordSchema.create({
       password,
