@@ -3,7 +3,8 @@ const passwordSchema = require("../db/passwordSchema");
 
 app.get("/", async (req, res) => {
   // check headers for password
-  if (!req.headers.token) res.send("Authorization required");
+
+  if (!req.headers.token) return res.send("Authorization required");
 
   if (req.headers.token !== process.env.CREDENTIAL)
     return res.send("Access denied");
