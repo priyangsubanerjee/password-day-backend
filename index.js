@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const port = 3000 || process.env.PORT;
+const port = 3001 || process.env.PORT;
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const connectDatabase = require("./db/connect");
@@ -9,7 +9,7 @@ connectDatabase();
 
 app.use(
   cors({
-    origin: "*",
+    origin: ["https://passwordday.vercel.app/"],
     methods: ["GET", "POST"],
     credentials: true,
   })
