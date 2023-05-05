@@ -6,10 +6,15 @@ const bodyParser = require("body-parser");
 const connectDatabase = require("./db/connect");
 const passwordSchema = require("./db/passwordSchema");
 
-//connectDatabase();
+connectDatabase();
 
-app.use(cors());
-
+app.use(
+  cors({
+    origin: "*",
+    methods: ["GET", "POST"],
+    credentials: true,
+  })
+);
 app.use(bodyParser.json());
 app.get("/", (req, res) => {
   res.send("Crack the code if you can -> http://passwordday.vercel.app");
