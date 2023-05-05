@@ -21,7 +21,7 @@ app.use("/create", require("./routes/create"));
 app.use("/hints", require("./routes/hints"));
 app.use("/publish", require("./routes/publish"));
 app.get("/", (req, res) => {
-  res.send("Crack the code if you can!");
+  res.sendFile(__dirname + "/public/index.html");
 });
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
